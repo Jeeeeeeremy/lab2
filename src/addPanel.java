@@ -126,6 +126,7 @@ public class addPanel extends JPanel {
                     Integer.valueOf(age.getText()),gender.getSelectedItem().toString(),
                     cur_date,level.getText(),team_info.getText(),position_title.getText(),
                     cell_phone_number.getText(),email_add.getText(),photo);
+            employees.put(employee_id.getText(),employee);
             clear();
         }else {
             JOptionPane.showMessageDialog(this,"validation failed, please validate your information");
