@@ -49,11 +49,11 @@ public class MainFrame extends JFrame {
 
         //======== panel3 ========
         {
-            panel3.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder( 0
-            , 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM
-            , new java .awt .Font ("D\u0069alog" ,java .awt .Font .BOLD ,12 ), java. awt. Color. red) ,
-            panel3. getBorder( )) ); panel3. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
-            ) {if ("\u0062order" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
+            panel3.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(0
+            ,0,0,0), "JF\u006frmDes\u0069gner \u0045valua\u0074ion",javax.swing.border.TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM
+            ,new java.awt.Font("D\u0069alog",java.awt.Font.BOLD,12),java.awt.Color.red),
+            panel3. getBorder()));panel3. addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e
+            ){if("\u0062order".equals(e.getPropertyName()))throw new RuntimeException();}});
             panel3.setLayout(new CardLayout());
         }
 
@@ -99,7 +99,7 @@ public class MainFrame extends JFrame {
                         .addComponent(button3)
                         .addGap(51, 51, 51)
                         .addComponent(button4)
-                        .addContainerGap(362, Short.MAX_VALUE))
+                        .addContainerGap(377, Short.MAX_VALUE))
             );
             panel4Layout.linkSize(SwingConstants.VERTICAL, new Component[] {button1, button2, button3, button4});
         }
@@ -112,7 +112,7 @@ public class MainFrame extends JFrame {
                     .addContainerGap()
                     .addComponent(panel4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(panel3, GroupLayout.PREFERRED_SIZE, 920, GroupLayout.PREFERRED_SIZE))
+                    .addComponent(panel3, GroupLayout.PREFERRED_SIZE, 900, GroupLayout.PREFERRED_SIZE))
         );
         contentPaneLayout.setVerticalGroup(
             contentPaneLayout.createParallelGroup()
@@ -120,7 +120,7 @@ public class MainFrame extends JFrame {
                     .addContainerGap()
                     .addGroup(contentPaneLayout.createParallelGroup()
                         .addComponent(panel4, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(panel3, GroupLayout.DEFAULT_SIZE, 779, Short.MAX_VALUE)))
+                        .addComponent(panel3, GroupLayout.DEFAULT_SIZE, 794, Short.MAX_VALUE)))
         );
         pack();
         setLocationRelativeTo(getOwner());
