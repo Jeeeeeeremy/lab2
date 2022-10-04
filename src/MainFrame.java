@@ -14,12 +14,12 @@ import javax.swing.border.*;
  * @author yibin
  */
 public class MainFrame extends JFrame {
-
+    public Map<String,Employee> employees = new HashMap<>();
     public MainFrame() {
         initComponents();
-        JPanel addpanel = new addPanel();
-        panel3.add(addpanel,"addpanel");
+        panel3.add(new addPanel(employees),"addpanel");
         panel3.add(new updatePanel(),"update");
+        panel3.add(new displayPanel(employees),"display");
     }
 
     private void addbutton(ActionEvent e) {
@@ -32,6 +32,12 @@ public class MainFrame extends JFrame {
         // TODO add your code here
         CardLayout card = (CardLayout) panel3.getLayout();
         card.show(panel3,"update");
+    }
+
+    private void display(ActionEvent e) {
+        // TODO add your code here
+        CardLayout card = (CardLayout) panel3.getLayout();
+
     }
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
@@ -49,11 +55,13 @@ public class MainFrame extends JFrame {
 
         //======== panel3 ========
         {
-            panel3.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder( 0
-            , 0, 0, 0) , "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e", javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM
-            , new java .awt .Font ("Dialo\u0067" ,java .awt .Font .BOLD ,12 ), java. awt. Color. red) ,
-            panel3. getBorder( )) ); panel3. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
-            ) {if ("borde\u0072" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
+            panel3.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new
+            javax.swing.border.EmptyBorder(0,0,0,0), "JF\u006frmDes\u0069gner \u0045valua\u0074ion",javax
+            .swing.border.TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM,new java
+            .awt.Font("D\u0069alog",java.awt.Font.BOLD,12),java.awt
+            .Color.red),panel3. getBorder()));panel3. addPropertyChangeListener(new java.beans.
+            PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("\u0062order".
+            equals(e.getPropertyName()))throw new RuntimeException();}});
             panel3.setLayout(new CardLayout());
         }
 
@@ -70,6 +78,7 @@ public class MainFrame extends JFrame {
 
             //---- button3 ----
             button3.setText(bundle.getString("MainFrame.button3.text"));
+            button3.addActionListener(e -> display(e));
 
             //---- button4 ----
             button4.setText(bundle.getString("MainFrame.button4.text"));

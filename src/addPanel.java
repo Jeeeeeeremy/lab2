@@ -21,13 +21,15 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  */
 public class addPanel extends JPanel {
     private ImageIcon photo;
-    private Map<String, Employee> employees = new HashMap<>();
-    public addPanel() {
+    //private Map<String, Employee> employees = new HashMap<>();
+    private Map<String, Employee> employees;
+    public addPanel(Map<String, Employee> employees) {
         initComponents();
         gender.addItem("male");
         gender.addItem("female");
         gender.addItem("not selected");
         gender.setSelectedItem("not selected");
+        this.employees = employees;
     }
     private boolean checker(){
         Pattern digitp = Pattern.compile("^[-\\+]?[\\d]*$");

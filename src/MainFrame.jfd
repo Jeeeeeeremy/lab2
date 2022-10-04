@@ -32,6 +32,7 @@ new FormModel {
 				add( new FormComponent( "javax.swing.JButton" ) {
 					name: "button3"
 					"text": new FormMessage( null, "MainFrame.button3.text" )
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "display", true ) )
 				} )
 				add( new FormComponent( "javax.swing.JButton" ) {
 					name: "button4"

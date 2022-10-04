@@ -1,0 +1,27 @@
+JFDML JFormDesigner: "7.0.7.1.1184" Java: "17.0.4" encoding: "UTF-8"
+
+new FormModel {
+	"i18n.autoExternalize": true
+	"i18n.bundleName": "form"
+	"i18n.keyPrefix": "displayPanel"
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq l {space :p:71:p, comp scrollPane1:::p:725:p, space ::104:x}}"
+			"$verticalGroup": "par l {seq l {space :p:63:p, comp scrollPane1:::p:329:p, space ::403:x}}"
+		} ) {
+			name: "this"
+			"preferredSize": new java.awt.Dimension( 900, 794 )
+			"minimumSize": new java.awt.Dimension( 900, 794 )
+			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+				name: "scrollPane1"
+				add( new FormComponent( "javax.swing.JTable" ) {
+					name: "table1"
+				} )
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 900, 795 )
+		} )
+	}
+}
