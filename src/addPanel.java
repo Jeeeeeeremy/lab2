@@ -3,7 +3,9 @@ import java.awt.event.*;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.regex.Pattern;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.GroupLayout;
@@ -19,6 +21,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  */
 public class addPanel extends JPanel {
     private ImageIcon photo;
+    private Map<String, Employee> employees = new HashMap<>();
     public addPanel() {
         initComponents();
         gender.addItem("male");
@@ -26,7 +29,28 @@ public class addPanel extends JPanel {
         gender.addItem("not selected");
         gender.setSelectedItem("not selected");
     }
-
+    private boolean checker(){
+        Pattern digitp = Pattern.compile("^[-\\+]?[\\d]*$");
+        String  regEx1 = "[a-zA-Z0-9]+@[a-zA-Z0-9]+\\.[a-zA-Z0-9]+";
+        Pattern emailcheck = Pattern.compile(regEx1);
+        if ( fisrtname.getText().length()==0
+                || lastname.getText().length()==0
+                || employee_id.getText().length()==0
+                || !digitp.matcher(employee_id.getText()).matches()
+                || age.getText().length()==0
+                || !digitp.matcher(age.getText()).matches()
+                || gender.getSelectedItem().equals("not selected")
+                || level.getText().length()==0
+                || team_info.getText().length()==0
+                || position_title.getText().length()==0
+                || cell_phone_number.getText().length()==0
+                || !digitp.matcher(cell_phone_number.getText()).matches()
+                || email_add.getText().length()==0
+                || !emailcheck.matcher(email_add.getText()).matches()
+                || photo==null)
+            return false;
+        return true;
+    }
     public byte[] fileToByte(File img) throws Exception {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         byte[] bytes = new byte[0];
@@ -76,17 +100,38 @@ public class addPanel extends JPanel {
             }
         }
     }
+
+    private void clear(){
+        fisrtname.setText("");
+        lastname.setText("");
+        age.setText("");
+        employee_id.setText("");
+        gender.setSelectedItem("not selected");
+        level.setText("");
+        team_info.setText("");
+        position_title.setText("");
+        cell_phone_number.setText("");
+        email_add.setText("");
+        photo=null;
+    }
+
     private void submit(ActionEvent e) {
         // TODO add your code here
+        if (checker()){
+            SimpleDateFormat formatter= new SimpleDateFormat("dd-MM-yyyy");
+            Date date = new Date(System.currentTimeMillis());
+            String cur_date = formatter.format(date);
+            System.out.println(cur_date);
+            Employee employee = new Employee(fisrtname.getText(),lastname.getText(),
+                    Integer.valueOf(age.getText()),gender.getSelectedItem().toString(),
+                    cur_date,level.getText(),team_info.getText(),position_title.getText(),
+                    cell_phone_number.getText(),email_add.getText(),photo);
+            clear();
+        }else {
+            JOptionPane.showMessageDialog(this,"validation failed, please validate your information");
+        }
     }
 
-    private void button2(ActionEvent e) {
-        // TODO add your code here
-    }
-
-    private void uploaPhoto(ActionEvent e) {
-        // TODO add your code here
-    }
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
@@ -111,9 +156,9 @@ public class addPanel extends JPanel {
         position_title = new JTextField();
         label10 = new JLabel();
         label11 = new JLabel();
-        position_title2 = new JTextField();
+        cell_phone_number = new JTextField();
         label12 = new JLabel();
-        position_title3 = new JTextField();
+        email_add = new JTextField();
         label13 = new JLabel();
         label14 = new JLabel();
         submit = new JButton();
@@ -122,12 +167,13 @@ public class addPanel extends JPanel {
         //======== this ========
         setPreferredSize(new Dimension(900, 794));
         setMinimumSize(new Dimension(900, 794));
-        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border
-        . EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e", javax. swing. border. TitledBorder. CENTER, javax
-        . swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dialo\u0067" ,java .awt .Font .BOLD ,
-        12 ), java. awt. Color. red) , getBorder( )) );  addPropertyChangeListener (new java. beans
-        . PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("borde\u0072" .equals (e .
-        getPropertyName () )) throw new RuntimeException( ); }} );
+        setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.
+        swing.border.EmptyBorder(0,0,0,0), "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e",javax.swing.border
+        .TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM,new java.awt.Font("D\u0069al\u006fg"
+        ,java.awt.Font.BOLD,12),java.awt.Color.red), getBorder
+        ())); addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void propertyChange(java
+        .beans.PropertyChangeEvent e){if("\u0062or\u0064er".equals(e.getPropertyName()))throw new RuntimeException
+        ();}});
 
         //---- label1 ----
         label1.setText(bundle.getString("addPanel.label1.text"));
@@ -262,11 +308,11 @@ public class addPanel extends JPanel {
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(label12)
                                     .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(position_title3, GroupLayout.PREFERRED_SIZE, 231, GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(email_add, GroupLayout.PREFERRED_SIZE, 231, GroupLayout.PREFERRED_SIZE))
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(label11)
                                     .addGap(27, 27, 27)
-                                    .addComponent(position_title2, GroupLayout.PREFERRED_SIZE, 231, GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(cell_phone_number, GroupLayout.PREFERRED_SIZE, 231, GroupLayout.PREFERRED_SIZE)))
                             .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(label13))
                         .addGroup(layout.createSequentialGroup()
@@ -318,11 +364,11 @@ public class addPanel extends JPanel {
                     .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                     .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                         .addComponent(label11, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
-                        .addComponent(position_title2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                        .addComponent(cell_phone_number, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
                     .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
                     .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                         .addComponent(label12, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
-                        .addComponent(position_title3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(email_add, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                         .addComponent(label13))
                     .addGap(18, 18, 18)
                     .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
@@ -356,9 +402,9 @@ public class addPanel extends JPanel {
     private JTextField position_title;
     private JLabel label10;
     private JLabel label11;
-    private JTextField position_title2;
+    private JTextField cell_phone_number;
     private JLabel label12;
-    private JTextField position_title3;
+    private JTextField email_add;
     private JLabel label13;
     private JLabel label14;
     private JButton submit;
