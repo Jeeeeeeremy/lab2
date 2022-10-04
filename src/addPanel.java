@@ -35,8 +35,6 @@ public class addPanel extends JPanel {
         Pattern emailcheck = Pattern.compile(regEx1);
         if ( fisrtname.getText().length()==0
                 || lastname.getText().length()==0
-                || employee_id.getText().length()==0
-                || !digitp.matcher(employee_id.getText()).matches()
                 || age.getText().length()==0
                 || !digitp.matcher(age.getText()).matches()
                 || gender.getSelectedItem().equals("not selected")
@@ -105,7 +103,6 @@ public class addPanel extends JPanel {
         fisrtname.setText("");
         lastname.setText("");
         age.setText("");
-        employee_id.setText("");
         gender.setSelectedItem("not selected");
         level.setText("");
         team_info.setText("");
@@ -122,11 +119,12 @@ public class addPanel extends JPanel {
             Date date = new Date(System.currentTimeMillis());
             String cur_date = formatter.format(date);
             System.out.println(cur_date);
+            String employee_id = System.currentTimeMillis()+"";
             Employee employee = new Employee(fisrtname.getText(),lastname.getText(),
                     Integer.valueOf(age.getText()),gender.getSelectedItem().toString(),
                     cur_date,level.getText(),team_info.getText(),position_title.getText(),
                     cell_phone_number.getText(),email_add.getText(),photo);
-            employees.put(employee_id.getText(),employee);
+            employees.put(employee_id,employee);
             clear();
         }else {
             JOptionPane.showMessageDialog(this,"validation failed, please validate your information");
@@ -143,8 +141,6 @@ public class addPanel extends JPanel {
         label2 = new JLabel();
         lastname = new JTextField();
         label3 = new JLabel();
-        label4 = new JLabel();
-        employee_id = new JTextField();
         label5 = new JLabel();
         age = new JTextField();
         label6 = new JLabel();
@@ -168,13 +164,13 @@ public class addPanel extends JPanel {
         //======== this ========
         setPreferredSize(new Dimension(900, 794));
         setMinimumSize(new Dimension(900, 794));
-        setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.
-        swing.border.EmptyBorder(0,0,0,0), "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e",javax.swing.border
-        .TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM,new java.awt.Font("D\u0069al\u006fg"
-        ,java.awt.Font.BOLD,12),java.awt.Color.red), getBorder
-        ())); addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void propertyChange(java
-        .beans.PropertyChangeEvent e){if("\u0062or\u0064er".equals(e.getPropertyName()))throw new RuntimeException
-        ();}});
+        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax.
+        swing. border. EmptyBorder( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing. border
+        . TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog"
+        ,java .awt .Font .BOLD ,12 ), java. awt. Color. red) , getBorder
+        ( )) );  addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java
+        .beans .PropertyChangeEvent e) {if ("bord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException
+        ( ); }} );
 
         //---- label1 ----
         label1.setText(bundle.getString("addPanel.label1.text"));
@@ -188,10 +184,6 @@ public class addPanel extends JPanel {
         label3.setText(bundle.getString("addPanel.label3.text"));
         label3.setHorizontalAlignment(SwingConstants.CENTER);
         label3.setFont(label3.getFont().deriveFont(label3.getFont().getStyle() | Font.BOLD, label3.getFont().getSize() + 9f));
-
-        //---- label4 ----
-        label4.setText(bundle.getString("addPanel.label4.text"));
-        label4.setFont(label4.getFont().deriveFont(label4.getFont().getSize() + 5f));
 
         //---- label5 ----
         label5.setText(bundle.getString("addPanel.label5.text"));
@@ -266,19 +258,17 @@ public class addPanel extends JPanel {
                                                 .addComponent(level, GroupLayout.PREFERRED_SIZE, 154, GroupLayout.PREFERRED_SIZE)
                                                 .addComponent(gender)))
                                         .addGroup(layout.createSequentialGroup()
-                                            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                                            .addGroup(layout.createParallelGroup()
                                                 .addGroup(layout.createSequentialGroup()
                                                     .addComponent(label5)
                                                     .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                                                    .addComponent(age))
-                                                .addComponent(label1, GroupLayout.PREFERRED_SIZE, 102, GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(label4))
+                                                    .addComponent(age, GroupLayout.PREFERRED_SIZE, 56, GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(label1, GroupLayout.PREFERRED_SIZE, 102, GroupLayout.PREFERRED_SIZE))
                                             .addGap(0, 0, Short.MAX_VALUE)))
                                     .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(layout.createParallelGroup()
                                 .addComponent(fisrtname, GroupLayout.PREFERRED_SIZE, 267, GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lastname, GroupLayout.PREFERRED_SIZE, 267, GroupLayout.PREFERRED_SIZE)
-                                .addComponent(employee_id, GroupLayout.PREFERRED_SIZE, 267, GroupLayout.PREFERRED_SIZE))
+                                .addComponent(lastname, GroupLayout.PREFERRED_SIZE, 267, GroupLayout.PREFERRED_SIZE))
                             .addGap(260, 260, 260))
                         .addGroup(layout.createSequentialGroup()
                             .addGroup(layout.createParallelGroup()
@@ -334,11 +324,7 @@ public class addPanel extends JPanel {
                     .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                         .addComponent(lastname, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                         .addComponent(label2, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE))
-                    .addGap(18, 18, 18)
-                    .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                        .addComponent(label4, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
-                        .addComponent(employee_id, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                    .addGap(26, 26, 26)
+                    .addGap(77, 77, 77)
                     .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                         .addComponent(label5, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
                         .addComponent(age, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
@@ -378,7 +364,7 @@ public class addPanel extends JPanel {
                         .addComponent(upload))
                     .addGap(58, 58, 58))
         );
-        layout.linkSize(SwingConstants.VERTICAL, new Component[] {label1, label2, label4});
+        layout.linkSize(SwingConstants.VERTICAL, new Component[] {label1, label2});
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
     }
 
@@ -389,8 +375,6 @@ public class addPanel extends JPanel {
     private JLabel label2;
     private JTextField lastname;
     private JLabel label3;
-    private JLabel label4;
-    private JTextField employee_id;
     private JLabel label5;
     private JTextField age;
     private JLabel label6;
