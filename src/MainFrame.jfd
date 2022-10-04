@@ -15,8 +15,8 @@ new FormModel {
 				name: "panel3"
 			} )
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-				"$horizontalGroup": "par l {seq l {space :p:68:p, par l {comp button4:1::p::p, comp button3:1::p::p, comp button2:1::p::p, comp button1:1::p::p}, space ::65:x}}"
-				"$verticalGroup": "par l {seq l {space :p:147:p, comp button1:2::p::p, space :p:49:p, comp button2:2::p::p, space :p:50:p, comp button3:2::p::p, space :p:51:p, comp button4:2::p::p, space ::377:x}}"
+				"$horizontalGroup": "par l {seq l {space :p:68:p, par l {comp button1:1::p::p, comp button4:1:l:p::p, comp button3:1:l:p::p, comp button2:1:l:p::p}, space ::65:x}}"
+				"$verticalGroup": "par l {seq l {space :p:147:p, comp button1:2::p::p, space ::124:x, comp button2:2::p::p, space :p:122:p, comp button3:2::p::p, space :p:129:p, comp button4:2::p::p, space :p:152:p}}"
 			} ) {
 				name: "panel4"
 				add( new FormComponent( "javax.swing.JButton" ) {
