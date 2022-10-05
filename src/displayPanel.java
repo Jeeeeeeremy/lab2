@@ -12,15 +12,29 @@ import javax.swing.GroupLayout;
  * @author yibin
  */
 public class displayPanel extends JPanel {
+    private String[] colunms;
+    private String[][] data;
     public displayPanel(Map<String, Employee> employees) {
-        initComponents();
+        colunms = new String[]{"Employee ID","Name","Team Info","Position title"};
+        data = new String[employees.keySet().size()][colunms.length];
+        int index = 0;
+        for (String id :
+                employees.keySet()) {
+            Employee cur = employees.get(id);
+            data[index][0] = cur.getEmployee_ID();
+            data[index][1] = cur.getName();
+            data[index][2] = cur.getTeam_info();
+            data[index][3] = cur.getPosition_title();
+            index++;
+        }
+        initComponents(colunms,data);
     }
-    
-    private void initComponents() {
+
+    private void initComponents(String[] col, String[][] data) {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - yibin
         scrollPane1 = new JScrollPane();
-        table1 = new JTable();
+        table1 = new JTable(data,col);
 
         //======== this ========
         setPreferredSize(new Dimension(900, 794));

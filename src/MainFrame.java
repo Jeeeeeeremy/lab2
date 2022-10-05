@@ -17,27 +17,29 @@ public class MainFrame extends JFrame {
     public Map<String,Employee> employees = new HashMap<>();
     public MainFrame() {
         initComponents();
-        panel3.add(new addPanel(employees),"addpanel");
+        panel3.add(new addPanel(employees),"add");
         panel3.add(new updatePanel(),"update");
-        panel3.add(new displayPanel(employees),"display");
+
     }
 
     private void addbutton(ActionEvent e) {
         // TODO add your code here
         CardLayout card = (CardLayout) panel3.getLayout();
-        card.show(panel3,"addpanel");
+        card.show(panel3,"add");
     }
 
     private void updatebutton(ActionEvent e) {
         // TODO add your code here
+
         CardLayout card = (CardLayout) panel3.getLayout();
         card.show(panel3,"update");
     }
 
     private void display(ActionEvent e) {
         // TODO add your code here
+        panel3.add(new displayPanel(employees),"display");
         CardLayout card = (CardLayout) panel3.getLayout();
-
+        card.show(panel3,"display");
     }
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
