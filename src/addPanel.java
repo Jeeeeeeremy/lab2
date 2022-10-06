@@ -122,8 +122,8 @@ public class addPanel extends JPanel {
             String cur_date = formatter.format(date);
             System.out.println(cur_date);
             String employee_id = System.currentTimeMillis()+"";
-            Employee employee = new Employee(fisrtname.getText(),lastname.getText(),
-                    Integer.valueOf(age.getText()),gender.getSelectedItem().toString(),
+            Employee employee = new Employee(fisrtname.getText()+" "+lastname.getText(),employee_id,
+                    Integer.parseInt(age.getText()),gender.getSelectedItem().toString(),
                     cur_date,level.getText(),team_info.getText(),position_title.getText(),
                     cell_phone_number.getText(),email_add.getText(),photo);
             employees.put(employee_id,employee);
@@ -166,13 +166,12 @@ public class addPanel extends JPanel {
         //======== this ========
         setPreferredSize(new Dimension(900, 794));
         setMinimumSize(new Dimension(900, 794));
-        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax.
-        swing. border. EmptyBorder( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing. border
-        . TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog"
-        ,java .awt .Font .BOLD ,12 ), java. awt. Color. red) , getBorder
-        ( )) );  addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java
-        .beans .PropertyChangeEvent e) {if ("bord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException
-        ( ); }} );
+        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder
+        ( 0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing. border. TitledBorder. CENTER, javax. swing. border
+        . TitledBorder. BOTTOM, new java .awt .Font ("D\u0069alog" ,java .awt .Font .BOLD ,12 ), java. awt
+        . Color. red) , getBorder( )) );  addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void
+        propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062order" .equals (e .getPropertyName () )) throw new RuntimeException( )
+        ; }} );
 
         //---- label1 ----
         label1.setText(bundle.getString("addPanel.label1.text"));

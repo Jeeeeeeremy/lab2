@@ -50,20 +50,19 @@ public class MainFrame extends JFrame {
         button1 = new JButton();
         button2 = new JButton();
         button3 = new JButton();
-        button4 = new JButton();
 
         //======== this ========
         var contentPane = getContentPane();
 
         //======== panel3 ========
         {
-            panel3.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new
-            javax.swing.border.EmptyBorder(0,0,0,0), "JF\u006frmDes\u0069gner \u0045valua\u0074ion",javax
-            .swing.border.TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM,new java
-            .awt.Font("D\u0069alog",java.awt.Font.BOLD,12),java.awt
-            .Color.red),panel3. getBorder()));panel3. addPropertyChangeListener(new java.beans.
-            PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("\u0062order".
-            equals(e.getPropertyName()))throw new RuntimeException();}});
+            panel3.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax
+            . swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing
+            . border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .
+            Font ("D\u0069alog" ,java .awt .Font .BOLD ,12 ), java. awt. Color. red
+            ) ,panel3. getBorder( )) ); panel3. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override
+            public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062order" .equals (e .getPropertyName (
+            ) )) throw new RuntimeException( ); }} );
             panel3.setLayout(new CardLayout());
         }
 
@@ -82,9 +81,6 @@ public class MainFrame extends JFrame {
             button3.setText(bundle.getString("MainFrame.button3.text"));
             button3.addActionListener(e -> display(e));
 
-            //---- button4 ----
-            button4.setText(bundle.getString("MainFrame.button4.text"));
-
             GroupLayout panel4Layout = new GroupLayout(panel4);
             panel4.setLayout(panel4Layout);
             panel4Layout.setHorizontalGroup(
@@ -93,12 +89,11 @@ public class MainFrame extends JFrame {
                         .addGap(68, 68, 68)
                         .addGroup(panel4Layout.createParallelGroup()
                             .addComponent(button1)
-                            .addComponent(button4)
                             .addComponent(button3)
                             .addComponent(button2))
                         .addContainerGap(65, Short.MAX_VALUE))
             );
-            panel4Layout.linkSize(SwingConstants.HORIZONTAL, new Component[] {button1, button2, button3, button4});
+            panel4Layout.linkSize(SwingConstants.HORIZONTAL, new Component[] {button1, button2, button3});
             panel4Layout.setVerticalGroup(
                 panel4Layout.createParallelGroup()
                     .addGroup(panel4Layout.createSequentialGroup()
@@ -108,11 +103,9 @@ public class MainFrame extends JFrame {
                         .addComponent(button2)
                         .addGap(122, 122, 122)
                         .addComponent(button3)
-                        .addGap(129, 129, 129)
-                        .addComponent(button4)
-                        .addGap(152, 152, 152))
+                        .addGap(311, 311, 311))
             );
-            panel4Layout.linkSize(SwingConstants.VERTICAL, new Component[] {button1, button2, button3, button4});
+            panel4Layout.linkSize(SwingConstants.VERTICAL, new Component[] {button1, button2, button3});
         }
 
         GroupLayout contentPaneLayout = new GroupLayout(contentPane);
@@ -145,7 +138,6 @@ public class MainFrame extends JFrame {
     private JButton button1;
     private JButton button2;
     private JButton button3;
-    private JButton button4;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 
 
