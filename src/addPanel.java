@@ -183,7 +183,6 @@ public class addPanel extends JPanel {
                         cur_date,level.getText(),team_info.getText(),position_title.getText(),
                         cell_phone_number.getText(),email_add.getText(),photo);
             }
-
             employees.put(employee_id,to_be_update);
             clear();
         }else {

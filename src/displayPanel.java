@@ -35,7 +35,12 @@ public class displayPanel extends JPanel {
             data[index][3] = cur.getPosition_title();
             index++;
         }
-        table1 = new JTable(data,colunms);
+        table1 = new JTable(data,colunms){
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
 
     }
 
