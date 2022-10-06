@@ -33,7 +33,7 @@ public class MainFrame extends JFrame {
             JOptionPane.showMessageDialog(new JDialog(), ":no employee existed, please enter another ID");
             return;
         }
-        panel3.add(new addPanel(employees.get(update_ID.getText())),"update");
+        panel3.add(new addPanel(employees.get(update_ID.getText()),employees),"update");
         CardLayout card = (CardLayout) panel3.getLayout();
         card.show(panel3,"update");
     }

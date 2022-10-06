@@ -25,6 +25,8 @@ public class addPanel extends JPanel {
     private Map<String, Employee> employees;
     private Employee updateEmployee;
     private String updateID;
+
+    //add
     public addPanel(Map<String, Employee> employees) {
         initComponents();
         gender.addItem("male");
@@ -34,12 +36,21 @@ public class addPanel extends JPanel {
         this.employees = employees;
     }
 
-    public addPanel(Employee updateEmployee){
+    //update
+    public addPanel(Employee updateEmployee,Map<String, Employee> employees){
         initComponents();
+        gender.addItem("male");
+        gender.addItem("female");
+        gender.addItem("not selected");
         this.updateEmployee = updateEmployee;
         this.updateID = updateEmployee.getEmployee_ID();
+        this.employees = employees;
         title.setText("you are updating employee: "+updateID);
+        employees.remove(updateID);
     }
+
+
+
     private boolean checker(){
         Pattern digitp = Pattern.compile("^[-\\+]?[\\d]*$");
         String  regEx1 = "[a-zA-Z0-9]+@[a-zA-Z0-9]+\\.[a-zA-Z0-9]+";
@@ -130,7 +141,15 @@ public class addPanel extends JPanel {
             Date date = new Date(System.currentTimeMillis());
             String cur_date = formatter.format(date);
             System.out.println(cur_date);
-            String employee_id = System.currentTimeMillis()+"";
+            String employee_id = "";
+            if (updateID!=null)
+            {
+                //for update
+                employee_id = updateID;
+            }else {
+                //for adding
+                employee_id = System.currentTimeMillis()+"";
+            }
             Employee employee = new Employee(fisrtname.getText()+" "+lastname.getText(),employee_id,
                     Integer.parseInt(age.getText()),gender.getSelectedItem().toString(),
                     cur_date,level.getText(),team_info.getText(),position_title.getText(),
