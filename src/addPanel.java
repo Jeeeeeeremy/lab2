@@ -41,12 +41,13 @@ public class addPanel extends JPanel {
         initComponents();
         gender.addItem("male");
         gender.addItem("female");
-        gender.addItem("not selected");
+        gender.addItem("");
+        gender.setSelectedItem("");
         this.updateEmployee = updateEmployee;
         this.updateID = updateEmployee.getEmployee_ID();
         this.employees = employees;
         title.setText("you are updating employee: "+updateID);
-        employees.remove(updateID);
+        //employees.remove(updateID);
     }
 
 
@@ -55,19 +56,24 @@ public class addPanel extends JPanel {
         Pattern digitp = Pattern.compile("^[-\\+]?[\\d]*$");
         String  regEx1 = "[a-zA-Z0-9]+@[a-zA-Z0-9]+\\.[a-zA-Z0-9]+";
         Pattern emailcheck = Pattern.compile(regEx1);
-        if ( fisrtname.getText().length()==0
+        //when meet update mode, just have the regex check
+        //empty check
+        if ( (fisrtname.getText().length()==0
                 || lastname.getText().length()==0
                 || age.getText().length()==0
-                || !digitp.matcher(age.getText()).matches()
                 || gender.getSelectedItem().equals("not selected")
                 || level.getText().length()==0
                 || team_info.getText().length()==0
                 || position_title.getText().length()==0
                 || cell_phone_number.getText().length()==0
-                || !digitp.matcher(cell_phone_number.getText()).matches()
                 || email_add.getText().length()==0
-                || !emailcheck.matcher(email_add.getText()).matches()
-                || photo==null)
+                || photo==null)&&updateID==null
+                )
+            return false;
+        //regex check
+        if ((cell_phone_number.getText().length()!=0&&!digitp.matcher(cell_phone_number.getText()).matches())
+                || (email_add.getText().length()!=0&&!emailcheck.matcher(email_add.getText()).matches())
+                ||(age.getText().length()!=0&&!digitp.matcher(age.getText()).matches()))
             return false;
         return true;
     }
@@ -142,19 +148,43 @@ public class addPanel extends JPanel {
             String cur_date = formatter.format(date);
             System.out.println(cur_date);
             String employee_id = "";
+            Employee to_be_update = null;
             if (updateID!=null)
             {
                 //for update
                 employee_id = updateID;
+                to_be_update = employees.get(employee_id);
+                employees.remove(employee_id);
+                if ( fisrtname.getText().length()!=0)
+                    to_be_update.setFirstName(fisrtname.getText());
+                if (lastname.getText().length()!=0)
+                    to_be_update.setLastName(lastname.getText());
+                if (age.getText().length()!=0)
+                    to_be_update.setAge(Integer.parseInt(age.getText()));
+                if (!gender.getSelectedItem().equals(""))
+                    to_be_update.setGender(gender.getSelectedItem().toString());
+                if (level.getText().length()!=0)
+                    to_be_update.setLevel(level.getText());
+                if (team_info.getText().length()!=0)
+                    to_be_update.setTeam_info(team_info.getText());
+                if (position_title.getText().length()!=0)
+                    to_be_update.setPosition_title(position_title.getText());
+                if (cell_phone_number.getText().length()!=0)
+                    to_be_update.setCellphone_number(cell_phone_number.getText());
+                if (email_add.getText().length()!=0)
+                    to_be_update.setEmail_address(email_add.getText());
+                if (photo!=null)
+                    to_be_update.setPhoto(photo);
             }else {
                 //for adding
                 employee_id = System.currentTimeMillis()+"";
+                to_be_update = new Employee(fisrtname.getText()+" "+lastname.getText(),employee_id,
+                        Integer.parseInt(age.getText()),gender.getSelectedItem().toString(),
+                        cur_date,level.getText(),team_info.getText(),position_title.getText(),
+                        cell_phone_number.getText(),email_add.getText(),photo);
             }
-            Employee employee = new Employee(fisrtname.getText()+" "+lastname.getText(),employee_id,
-                    Integer.parseInt(age.getText()),gender.getSelectedItem().toString(),
-                    cur_date,level.getText(),team_info.getText(),position_title.getText(),
-                    cell_phone_number.getText(),email_add.getText(),photo);
-            employees.put(employee_id,employee);
+
+            employees.put(employee_id,to_be_update);
             clear();
         }else {
             JOptionPane.showMessageDialog(this,"validation failed, please validate your information");

@@ -51,6 +51,13 @@ public class Employee {
                 '}';
     }
 
+    public void setFirstName(String firstName){
+        Name =firstName+" "+Name.split(" ")[1];
+    }
+
+    public void setLastName(String lastName){
+        Name =Name.split(" ")[0]+" "+lastName;
+    }
     public void setName(String name) {
         Name = name;
     }
