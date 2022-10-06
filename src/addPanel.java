@@ -23,6 +23,8 @@ public class addPanel extends JPanel {
     private ImageIcon photo;
     //private Map<String, Employee> employees = new HashMap<>();
     private Map<String, Employee> employees;
+    private Employee updateEmployee;
+    private String updateID;
     public addPanel(Map<String, Employee> employees) {
         initComponents();
         gender.addItem("male");
@@ -30,6 +32,13 @@ public class addPanel extends JPanel {
         gender.addItem("not selected");
         gender.setSelectedItem("not selected");
         this.employees = employees;
+    }
+
+    public addPanel(Employee updateEmployee){
+        initComponents();
+        this.updateEmployee = updateEmployee;
+        this.updateID = updateEmployee.getEmployee_ID();
+        title.setText("you are updating employee: "+updateID);
     }
     private boolean checker(){
         Pattern digitp = Pattern.compile("^[-\\+]?[\\d]*$");
@@ -142,7 +151,7 @@ public class addPanel extends JPanel {
         fisrtname = new JTextField();
         label2 = new JLabel();
         lastname = new JTextField();
-        label3 = new JLabel();
+        title = new JLabel();
         label5 = new JLabel();
         age = new JTextField();
         label6 = new JLabel();
@@ -166,12 +175,11 @@ public class addPanel extends JPanel {
         //======== this ========
         setPreferredSize(new Dimension(900, 794));
         setMinimumSize(new Dimension(900, 794));
-        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder
-        ( 0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing. border. TitledBorder. CENTER, javax. swing. border
-        . TitledBorder. BOTTOM, new java .awt .Font ("D\u0069alog" ,java .awt .Font .BOLD ,12 ), java. awt
-        . Color. red) , getBorder( )) );  addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void
-        propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062order" .equals (e .getPropertyName () )) throw new RuntimeException( )
-        ; }} );
+        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder( 0
+        , 0, 0, 0) , "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e", javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM
+        , new java .awt .Font ("D\u0069al\u006fg" ,java .awt .Font .BOLD ,12 ), java. awt. Color. red) ,
+         getBorder( )) );  addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
+        ) {if ("\u0062or\u0064er" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
 
         //---- label1 ----
         label1.setText(bundle.getString("addPanel.label1.text"));
@@ -181,10 +189,10 @@ public class addPanel extends JPanel {
         label2.setText(bundle.getString("addPanel.label2.text"));
         label2.setFont(label2.getFont().deriveFont(label2.getFont().getSize() + 5f));
 
-        //---- label3 ----
-        label3.setText(bundle.getString("addPanel.label3.text"));
-        label3.setHorizontalAlignment(SwingConstants.CENTER);
-        label3.setFont(label3.getFont().deriveFont(label3.getFont().getStyle() | Font.BOLD, label3.getFont().getSize() + 9f));
+        //---- title ----
+        title.setText(bundle.getString("addPanel.title.text"));
+        title.setHorizontalAlignment(SwingConstants.CENTER);
+        title.setFont(title.getFont().deriveFont(title.getFont().getStyle() | Font.BOLD, title.getFont().getSize() + 9f));
 
         //---- label5 ----
         label5.setText(bundle.getString("addPanel.label5.text"));
@@ -309,14 +317,14 @@ public class addPanel extends JPanel {
                             .addComponent(label13))
                         .addGroup(layout.createSequentialGroup()
                             .addContainerGap()
-                            .addComponent(label3, GroupLayout.PREFERRED_SIZE, 907, GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(title, GroupLayout.PREFERRED_SIZE, 907, GroupLayout.PREFERRED_SIZE)))
                     .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup()
                 .addGroup(layout.createSequentialGroup()
                     .addGap(26, 26, 26)
-                    .addComponent(label3, GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
+                    .addComponent(title, GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
                     .addGap(18, 18, 18)
                     .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                         .addComponent(fisrtname, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
@@ -375,7 +383,7 @@ public class addPanel extends JPanel {
     private JTextField fisrtname;
     private JLabel label2;
     private JTextField lastname;
-    private JLabel label3;
+    private JLabel title;
     private JLabel label5;
     private JTextField age;
     private JLabel label6;

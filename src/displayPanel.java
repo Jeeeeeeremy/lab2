@@ -91,7 +91,6 @@ public class displayPanel extends JPanel {
             JOptionPane.showMessageDialog(new JDialog(), ":please select one row to delete");
             return;
         }
-        //TableModel model = table1.getModel();
         TableModel model = table1.getModel();
         String ID =(String)model.getValueAt(selected_row,0);
         employees.remove(ID);

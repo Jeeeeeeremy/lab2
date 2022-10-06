@@ -7,17 +7,120 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq l {space :p:135:p, comp label1:::p::p, space ::353:x}}"
-			"$verticalGroup": "par l {seq l {space :p:106:p, comp label1:::p::p, space ::303:x}}"
+			"$horizontalGroup": "par l {seq l {par t {seq t {space :p:113:p, par l {comp old_lastname:::::x, comp old_firstname::l::392:x}}, seq t {space :::p, par l {comp old_age:::p:290:p, comp old_gender:::p:300:p}, space :p:108:p}}, space :p:145:p, par t {comp fisrtname:::p:267:p, comp lastname:::p:267:p}, space :p:121:p}, seq l {space :p:104:p, par l {seq {par l {comp old_level:::p:300:p, comp old_Team_info::t:p:300:p}, space :p:28:p, par l {comp age:::p:56:p, comp level:::p:154:p, comp team_info:::p:214:p, comp gender::l:p:104:p}, space :0:279:x}, seq {par l {seq {space :p:1:p, comp label10:::p::p}, comp old_position_title::l:p:300:p}, space :p:28:p, comp position_title:::p:231:p, space ::262:x}, seq l {space :p:97:p, comp photo:::p::p, space :::p, comp upload:::p::p, space ::351:x, comp label13:::p::p, space :p:195:p}}}, seq l {space :p:131:p, par l {comp label3:::p:907:p, seq t {par t {comp old_email_address::::521:x, comp old_cell_phone_number::::521:x}, space :::p, par l {comp cell_phone_number::t:p:231:p, comp email_add::t:p:231:p}, space :p:149:p}}}, seq t {space ::646:x, comp update:::p::p, space :p:314:p}}"
+			"$verticalGroup": "par l {seq l {space :p:26:p, comp label3::::52:x, space s:::p, par b {comp fisrtname::b:p::p, comp old_firstname:1:b:p:33:p}, space s:p::p, par b {comp old_lastname:1:b:p:33:p, comp lastname::b:p::p}, space :p:77:p, par b {comp age::b:p::p, comp old_age::b:p:33:p}, space s:::p, par b {comp gender::b:p::p, comp old_gender::b:p:33:p}, par l {seq l {space :p:69:p, comp old_Team_info:::p:33:p, space :p:18:p, comp old_position_title:::p:33:p}, seq l {space :p:24:p, par b {comp level::b:p::p, comp old_level::b:p:33:p}, space s:::p, comp team_info:::p::p, space s:::p, comp position_title:::p::p}}, space :p:35:p, comp label10:::p:33:p, space s:::p, par b {comp old_cell_phone_number::b:p:33:p, comp cell_phone_number::b:p::p}, par l {seq l {space :p:5:p, par b {comp email_add::b:p::p, comp old_email_address::b:p:33:p}, space s:::p, par b {comp photo::b:p:33:p, comp upload::b:p::p}}, seq l {space :p:48:p, comp label13:::p::p}}, space :p:3:p, comp update:::p::p, space :p:25:p}}"
 		} ) {
 			name: "this"
+			"preferredSize": new java.awt.Dimension( 900, 794 )
+			"minimumSize": new java.awt.Dimension( 900, 794 )
 			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "label1"
-				"text": new FormMessage( null, "updatePanel.label1.text" )
+				name: "old_firstname"
+				"text": new FormMessage( null, "updatePanel.old_firstname.text" )
+				"font": &SwingDerivedFont0 new com.jformdesigner.model.SwingDerivedFont( null, 0, 5, false )
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "fisrtname"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "old_lastname"
+				"text": new FormMessage( null, "updatePanel.old_lastname.text" )
+				"font": #SwingDerivedFont0
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "lastname"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label3"
+				"text": new FormMessage( null, "updatePanel.label3.text" )
+				"horizontalAlignment": 0
+				"font": new com.jformdesigner.model.SwingDerivedFont( null, 1, 9, false )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "old_age"
+				"text": new FormMessage( null, "updatePanel.old_age.text" )
+				"font": #SwingDerivedFont0
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "age"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "old_gender"
+				"text": new FormMessage( null, "updatePanel.old_gender.text" )
+				"font": #SwingDerivedFont0
+			} )
+			add( new FormComponent( "javax.swing.JComboBox" ) {
+				name: "gender"
+				auxiliary() {
+					"JavaCodeGenerator.variableName": "gender"
+				}
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "old_level"
+				"text": new FormMessage( null, "updatePanel.old_level.text" )
+				"font": #SwingDerivedFont0
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "level"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "old_Team_info"
+				"text": new FormMessage( null, "updatePanel.old_Team_info.text" )
+				"font": #SwingDerivedFont0
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "team_info"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "old_position_title"
+				"text": new FormMessage( null, "updatePanel.old_position_title.text" )
+				"font": #SwingDerivedFont0
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "position_title"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label10"
+				"text": new FormMessage( null, "updatePanel.label10.text" )
+				"font": #SwingDerivedFont0
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "old_cell_phone_number"
+				"text": new FormMessage( null, "updatePanel.old_cell_phone_number.text" )
+				"font": #SwingDerivedFont0
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "cell_phone_number"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "old_email_address"
+				"text": new FormMessage( null, "updatePanel.old_email_address.text" )
+				"font": #SwingDerivedFont0
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "email_add"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label13"
+				"text": new FormMessage( null, "updatePanel.label13.text" )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "photo"
+				"text": new FormMessage( null, "updatePanel.photo.text" )
+				"font": #SwingDerivedFont0
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "update"
+				"text": new FormMessage( null, "updatePanel.update.text" )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "submit", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "upload"
+				"text": new FormMessage( null, "updatePanel.upload.text" )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "uploadPhoto", true ) )
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 535, 425 )
+			"size": new java.awt.Dimension( 925, 760 )
 		} )
 	}
 }
