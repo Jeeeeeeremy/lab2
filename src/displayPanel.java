@@ -19,8 +19,10 @@ public class displayPanel extends JPanel {
     private String[] colunms;
     private String[][] data;
     private Map<String, Employee> employees;
-    public displayPanel(Map<String, Employee> employees) {
-        this.employees = employees;
+
+
+
+    private void prepare_table(){
         colunms = new String[]{"Employee ID","Name","Team Info","Position title"};
         data = new String[employees.keySet().size()][colunms.length];
         int index = 0;
@@ -33,6 +35,13 @@ public class displayPanel extends JPanel {
             data[index][3] = cur.getPosition_title();
             index++;
         }
+        table1 = new JTable(data,colunms);
+
+    }
+
+    public displayPanel(Map<String, Employee> employees) {
+        this.employees = employees;
+        prepare_table();
         initComponents(colunms,data);
     }
 
@@ -75,11 +84,19 @@ public class displayPanel extends JPanel {
 
     private void delete(ActionEvent e) {
         // TODO add your code here
+        info_label.setText("");
+        photo_label.setIcon(null);
         int selected_row = table1.getSelectedRow();
         if (selected_row<0){
             JOptionPane.showMessageDialog(new JDialog(), ":please select one row to delete");
             return;
         }
+        //TableModel model = table1.getModel();
+        TableModel model = table1.getModel();
+        String ID =(String)model.getValueAt(selected_row,0);
+        employees.remove(ID);
+        prepare_table();
+        scrollPane1.setViewportView(table1);
     }
 
 
@@ -90,7 +107,7 @@ public class displayPanel extends JPanel {
         // Generated using JFormDesigner Evaluation license - yibin
         ResourceBundle bundle = ResourceBundle.getBundle("form");
         scrollPane1 = new JScrollPane();
-        table1 = new JTable();
+        //table1 = new JTable(data,col);
         view_details = new JButton();
         delete = new JButton();
         info_label = new JLabel();
