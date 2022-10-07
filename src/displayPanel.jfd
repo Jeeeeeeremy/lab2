@@ -7,8 +7,8 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq l {space :p:71:p, par l:::p {seq {comp info_label:::p:228:p, space s:::p, comp photo_label:::p:202:p, space :::x, comp view_details:::p::p, space :p:61:p, comp delete:::p::p}, comp scrollPane1:::p:725:p}, space ::104:x}}"
-			"$verticalGroup": "par l {seq l {space :p:63:p, comp scrollPane1:::p:329:p, space s:::p, par l {comp info_label::::379:x, seq l {par l {comp delete:::p::p, comp view_details::l:p::p}, space :0:349:x}, seq t {space :0:14:x, comp photo_label:::p:166:p, space :0:199:x}}, space :::p}}"
+			"$horizontalGroup": "par l {seq l {space :p:71:p, par l {par l:::p {seq {comp info_label:::p:228:p, space s:::p, comp photo_label:::p:202:p, space ::80:x, comp view_details:::p::p, space :p:61:p, comp delete:::p::p}, comp scrollPane1:::p:725:p}, seq {comp search_items:::p:121:p, space s:::p, comp search_value:::p:177:p, space :p:59:p, comp search:::p:115:p}}, space ::57:x}}"
+			"$verticalGroup": "par l {seq l {par l {seq {space :p:25:p, par b {comp search_items::b:p::p, comp search::b:p::p}}, seq t {space :::p, comp search_value:::p::p}}, space s:::p, comp scrollPane1:::p:329:p, space s:::p, par l {comp info_label::::369:x, seq l {par l {comp delete:::p::p, comp view_details::l:p::p}, space :0:0:x}, seq t {space :0:9:x, comp photo_label:::p:166:p, space :0:194:x}}, space :::p}}"
 		} ) {
 			name: "this"
 			"preferredSize": new java.awt.Dimension( 900, 794 )
@@ -34,6 +34,17 @@ new FormModel {
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "photo_label"
+			} )
+			add( new FormComponent( "javax.swing.JComboBox" ) {
+				name: "search_items"
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "search"
+				"text": "search"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "search", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "search_value"
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
