@@ -143,6 +143,17 @@ public class displayPanel extends JPanel {
     }
 
 
+    private void reset(ActionEvent e) {
+        // TODO add your code here
+        prepare_table();
+        scrollPane1.setViewportView(table1);
+    }
+
+    private void button1(ActionEvent e) {
+        // TODO add your code here
+    }
+
+
 
 
     private void initComponents(String[] col, String[][] data) {
@@ -158,18 +169,19 @@ public class displayPanel extends JPanel {
         search_items = new JComboBox();
         search = new JButton();
         search_value = new JTextField();
+        reset = new JButton();
 
         //======== this ========
         setPreferredSize(new Dimension(900, 794));
         setMinimumSize(new Dimension(900, 794));
-        setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(
-        new javax.swing.border.EmptyBorder(0,0,0,0), "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e"
-        ,javax.swing.border.TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM
-        ,new java.awt.Font("D\u0069al\u006fg",java.awt.Font.BOLD,12)
-        ,java.awt.Color.red), getBorder())); addPropertyChangeListener(
-        new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e
-        ){if("\u0062or\u0064er".equals(e.getPropertyName()))throw new RuntimeException()
-        ;}});
+        setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder (
+        new javax . swing. border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JFor\u006dDesi\u0067ner \u0045valu\u0061tion"
+        , javax. swing .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM
+        , new java. awt .Font ( "Dia\u006cog", java .awt . Font. BOLD ,12 )
+        ,java . awt. Color .red ) , getBorder () ) );  addPropertyChangeListener(
+        new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e
+        ) { if( "bord\u0065r" .equals ( e. getPropertyName () ) )throw new RuntimeException( )
+        ;} } );
 
         //======== scrollPane1 ========
         {
@@ -187,6 +199,13 @@ public class displayPanel extends JPanel {
         //---- search ----
         search.setText("search");
         search.addActionListener(e -> search(e));
+
+        //---- reset ----
+        reset.setText("reset");
+        reset.addActionListener(e -> {
+			button1(e);
+			reset(e);
+		});
 
         GroupLayout layout = new GroupLayout(this);
         setLayout(layout);
@@ -210,7 +229,9 @@ public class displayPanel extends JPanel {
                             .addGap(18, 18, 18)
                             .addComponent(search_value, GroupLayout.PREFERRED_SIZE, 177, GroupLayout.PREFERRED_SIZE)
                             .addGap(59, 59, 59)
-                            .addComponent(search, GroupLayout.PREFERRED_SIZE, 115, GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(search, GroupLayout.PREFERRED_SIZE, 115, GroupLayout.PREFERRED_SIZE)
+                            .addGap(37, 37, 37)
+                            .addComponent(reset)))
                     .addContainerGap(57, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -221,7 +242,8 @@ public class displayPanel extends JPanel {
                             .addGap(25, 25, 25)
                             .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                                 .addComponent(search_items, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                .addComponent(search)))
+                                .addComponent(search)
+                                .addComponent(reset)))
                         .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                             .addContainerGap()
                             .addComponent(search_value, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
@@ -255,5 +277,6 @@ public class displayPanel extends JPanel {
     private JComboBox search_items;
     private JButton search;
     private JTextField search_value;
+    private JButton reset;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }
