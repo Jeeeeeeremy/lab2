@@ -147,6 +147,8 @@ public class displayPanel extends JPanel {
         // TODO add your code here
         prepare_table();
         scrollPane1.setViewportView(table1);
+        search_items.setSelectedItem("");
+        search_value.setText("");
     }
 
     private void button1(ActionEvent e) {

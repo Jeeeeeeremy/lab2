@@ -36,6 +36,7 @@ public class MainFrame extends JFrame {
         panel3.add(new addPanel(employees.get(update_ID.getText()),employees),"update");
         CardLayout card = (CardLayout) panel3.getLayout();
         card.show(panel3,"update");
+        update_ID.setText("");
     }
 
     private void display(ActionEvent e) {
